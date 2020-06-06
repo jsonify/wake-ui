@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C191DE1248B656E001C7020 /* WakeScreenDurationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C191DE0248B656E001C7020 /* WakeScreenDurationSettingsView.swift */; };
 		4C4034282488C5ED0055A7DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4034272488C5ED0055A7DD /* AppDelegate.swift */; };
 		4C40342A2488C5ED0055A7DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4034292488C5ED0055A7DD /* SceneDelegate.swift */; };
 		4C40342C2488C5ED0055A7DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40342B2488C5ED0055A7DD /* ContentView.swift */; };
 		4C40342E2488C5ED0055A7DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C40342D2488C5ED0055A7DD /* Assets.xcassets */; };
 		4C4034312488C5ED0055A7DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4034302488C5ED0055A7DD /* Preview Assets.xcassets */; };
 		4C4034342488C5ED0055A7DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4034322488C5ED0055A7DD /* LaunchScreen.storyboard */; };
+		4C40343C2488C6220055A7DD /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40343B2488C6220055A7DD /* Home.swift */; };
+		4C40343E2488D00F0055A7DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40343D2488D00F0055A7DD /* SettingsView.swift */; };
+		4C4034402488D5210055A7DD /* WakeTimeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40343F2488D5210055A7DD /* WakeTimeSettingsView.swift */; };
+		4C4034422488D9800055A7DD /* PreWakeDurationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4034412488D9800055A7DD /* PreWakeDurationSettingsView.swift */; };
+		4CF979CC248A2CE200F5F000 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF979CB248A2CE200F5F000 /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C191DE0248B656E001C7020 /* WakeScreenDurationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeScreenDurationSettingsView.swift; sourceTree = "<group>"; };
 		4C4034242488C5ED0055A7DD /* Waker-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Waker-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C4034272488C5ED0055A7DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4034292488C5ED0055A7DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +31,11 @@
 		4C4034302488C5ED0055A7DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C4034332488C5ED0055A7DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4034352488C5ED0055A7DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C40343B2488C6220055A7DD /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		4C40343D2488D00F0055A7DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4C40343F2488D5210055A7DD /* WakeTimeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeTimeSettingsView.swift; sourceTree = "<group>"; };
+		4C4034412488D9800055A7DD /* PreWakeDurationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreWakeDurationSettingsView.swift; sourceTree = "<group>"; };
+		4CF979CB248A2CE200F5F000 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +68,12 @@
 		4C4034262488C5ED0055A7DD /* Waker-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				4C4034272488C5ED0055A7DD /* AppDelegate.swift */,
-				4C4034292488C5ED0055A7DD /* SceneDelegate.swift */,
-				4C40342B2488C5ED0055A7DD /* ContentView.swift */,
+				4CF979CD248B3FAA00F5F000 /* Data */,
+				4CF979CE248B3FB100F5F000 /* Views */,
 				4C40342D2488C5ED0055A7DD /* Assets.xcassets */,
 				4C4034322488C5ED0055A7DD /* LaunchScreen.storyboard */,
 				4C4034352488C5ED0055A7DD /* Info.plist */,
+				4CF979CF248B3FB700F5F000 /* Support */,
 				4C40342F2488C5ED0055A7DD /* Preview Content */,
 			);
 			path = "Waker-SwiftUI";
@@ -73,6 +85,44 @@
 				4C4034302488C5ED0055A7DD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4CF979CD248B3FAA00F5F000 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4CF979CB248A2CE200F5F000 /* UserData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4CF979CE248B3FB100F5F000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C40343B2488C6220055A7DD /* Home.swift */,
+				4CF979D0248B400000F5F000 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4CF979CF248B3FB700F5F000 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4C40342B2488C5ED0055A7DD /* ContentView.swift */,
+				4C4034272488C5ED0055A7DD /* AppDelegate.swift */,
+				4C4034292488C5ED0055A7DD /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		4CF979D0248B400000F5F000 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4C40343D2488D00F0055A7DD /* SettingsView.swift */,
+				4C40343F2488D5210055A7DD /* WakeTimeSettingsView.swift */,
+				4C4034412488D9800055A7DD /* PreWakeDurationSettingsView.swift */,
+				4C191DE0248B656E001C7020 /* WakeScreenDurationSettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +196,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C191DE1248B656E001C7020 /* WakeScreenDurationSettingsView.swift in Sources */,
+				4C40343E2488D00F0055A7DD /* SettingsView.swift in Sources */,
 				4C4034282488C5ED0055A7DD /* AppDelegate.swift in Sources */,
+				4C4034402488D5210055A7DD /* WakeTimeSettingsView.swift in Sources */,
 				4C40342A2488C5ED0055A7DD /* SceneDelegate.swift in Sources */,
+				4C40343C2488C6220055A7DD /* Home.swift in Sources */,
+				4C4034422488D9800055A7DD /* PreWakeDurationSettingsView.swift in Sources */,
+				4CF979CC248A2CE200F5F000 /* UserData.swift in Sources */,
 				4C40342C2488C5ED0055A7DD /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
