@@ -17,6 +17,9 @@ class UserData: ObservableObject {
     }
     
     static let preWakeDurationKey = "preWakeDuration"
+    static let wakeScreenDurationKey = "wakeScreenDuration"
+    static let rainSoundEnabled = "rainSoundEnabled"
+    static let showClock = "showClock"
 
     
     @Published var preWakeDuration: Int {
@@ -26,20 +29,32 @@ class UserData: ObservableObject {
         }
     }
     
-    init() {
-        preWakeDuration = UserDefaults.standard.integer(forKey: Self.preWakeDurationKey) 
-    }
     
-    @Published var wakeScreenDuration: Int  = UserDefaults.standard.integer(forKey: "wakeScreenDuration") {
+    @Published var wakeScreenDuration: Int {
            didSet {
-               UserDefaults.standard.set(self.wakeScreenDuration, forKey: "wakeScreenDuration")
-           }
-           
-           willSet {
-               objectWillChange.send()
+            UserDefaults.standard.set(self.wakeScreenDuration, forKey: Self.wakeScreenDurationKey)
            }
            
        }
     
+    @Published var rainSoundEnabled: Bool {
+        didSet {
+            UserDefaults.standard.set(rainSoundEnabled, forKey: Self.rainSoundEnabled)
+        }
+    }
+    
+    @Published var showClock: Bool {
+        didSet {
+            UserDefaults.standard.set(showClock, forKey: Self.showClock)
+        }
+    }
+    
+    init() {
+        preWakeDuration = UserDefaults.standard.integer(forKey: Self.preWakeDurationKey)
+        wakeScreenDuration = UserDefaults.standard.integer(forKey: Self.wakeScreenDurationKey)
+        rainSoundEnabled = UserDefaults.standard.bool(forKey: Self.rainSoundEnabled)
+        showClock = UserDefaults.standard.bool(forKey: Self.showClock)
+        
+    }
     
 }

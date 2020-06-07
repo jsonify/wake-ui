@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct Home: View {
-    @State private var wakeTimeSettingShowing = false
+    @State private var showWakeTimeSettings = false
     @State private var showPreWakeSettings = false
     @State private var showWakeScreenSettings = false
+    @State private var showSettings = false
     
     @ObservedObject var userData = UserData()
     
@@ -19,14 +20,30 @@ struct Home: View {
         NavigationView {
             ZStack {
                 VStack {
-                    TimeSelector(title: "Wake Up Time", time: "12:00 am".uppercased())
-                        .background(Color(#colorLiteral(red: 0.03529411765, green: 0.2235294118, blue: 0.2784313725, alpha: 1)))
-                        .onTapGesture {
-                            self.wakeTimeSettingShowing.toggle()
+                    VStack {
+                        Text("Wake Up Time")
+                        Text("\(userData.wakeUpTime)")
+                            .font(.title)
                     }
-                    .sheet(isPresented: $wakeTimeSettingShowing) {
-                        WakeTimeSettingsView()
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(#colorLiteral(red: 0.03529411765, green: 0.2235294118, blue: 0.2784313725, alpha: 1)))
+                    .onTapGesture {
+                        if self.showWakeScreenSettings == true {
+                            self.showWakeScreenSettings.toggle()
+                        }
+                        
+                        if self.showPreWakeSettings == true {
+                            self.showPreWakeSettings.toggle()
+                        }
+                        
+                        if self.showSettings == true {
+                            self.showSettings.toggle()
+                        }
+                        
+                        self.showWakeTimeSettings.toggle()
                     }
+                    
                     
                     VStack {
                         Text("PreWake Duration")
@@ -37,6 +54,18 @@ struct Home: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(#colorLiteral(red: 0.08235294118, green: 0.4745098039, blue: 0.4784313725, alpha: 1)))
                     .onTapGesture {
+                        if self.showWakeScreenSettings == true {
+                            self.showWakeScreenSettings.toggle()
+                        }
+                        
+                        if self.showWakeTimeSettings == true {
+                            self.showWakeTimeSettings.toggle()
+                        }
+                        
+                        if self.showSettings == true {
+                            self.showSettings.toggle()
+                        }
+                        
                         self.showPreWakeSettings.toggle()
                     }
                     
@@ -49,19 +78,52 @@ struct Home: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(#colorLiteral(red: 0.5058823529, green: 0.6235294118, blue: 0, alpha: 1)))
                     .onTapGesture {
+                        if self.showPreWakeSettings == true {
+                            self.showPreWakeSettings.toggle()
+                        }
+                        
+                        if self.showWakeTimeSettings == true {
+                            self.showWakeTimeSettings.toggle()
+                        }
+                        
+                        if self.showSettings == true {
+                            self.showSettings.toggle()
+                        }
+                        
                         self.showWakeScreenSettings.toggle()
                     }
-                    .sheet(isPresented: self.$showWakeScreenSettings) {
-                            WakeScreenDurationSettingsView()
+                    
+                    VStack {
+                        Text("Settings")
+                        
+                    }
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(#colorLiteral(red: 0.8901960784, green: 0.6, blue: 0, alpha: 1)))
+                    .onTapGesture {
+                        if self.showPreWakeSettings == true {
+                            self.showPreWakeSettings.toggle()
+                        }
+                        
+                        if self.showWakeTimeSettings == true {
+                            self.showWakeTimeSettings.toggle()
+                        }
+                        
+                        if self.showWakeScreenSettings == true {
+                            self.showWakeScreenSettings.toggle()
+                        }
+                        
+                        self.showSettings.toggle()
                     }
                     
-                    NavigationLink(destination: SettingsView()) {
-                        Text("Settings")
-                            .font(.title)
-                            .frame(maxWidth: .infinity, maxHeight: 75)
-                            .foregroundColor(.white)
-                            .background(Color(#colorLiteral(red: 0.8901960784, green: 0.6, blue: 0, alpha: 1)))
-                    }
+                    
+//                    NavigationLink(destination: SettingsView(showing: <#Binding<Bool>#>, userData: <#UserData#>)) {
+//                        Text("Settings")
+//                            .font(.title)
+//                            .frame(maxWidth: .infinity, maxHeight: 75)
+//                            .foregroundColor(.white)
+//                            .background(Color(#colorLiteral(red: 0.8901960784, green: 0.6, blue: 0, alpha: 1)))
+//                    }
                     NavigationLink(destination: ContentView()) {
                         Text("Start")
                             .font(.title)
@@ -71,14 +133,24 @@ struct Home: View {
                     }
                     
                 }
-                .navigationBarHidden(true)
-                .navigationBarTitle(Text(""))
-                .edgesIgnoringSafeArea([.top, .bottom])
+                .navigationBarTitle(Text(""), displayMode: .inline)
+                .edgesIgnoringSafeArea(.bottom)
                 
-                PreWakeDurationSettingsView()
-                    .offset(y: showPreWakeSettings ? 0 : 600)
+                WakeTimeSettingsView(showing: $showWakeTimeSettings, userData: userData)
+                .offset(y: showWakeTimeSettings ? 0 : -600)
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                
+                PreWakeDurationSettingsView(showing: $showPreWakeSettings, userData: userData)
+                    .offset(x: showPreWakeSettings ? 0 : 600)
                     .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
                 
+                WakeScreenDurationSettingsView(showing: $showWakeScreenSettings, userData: userData)
+                .offset(x: showWakeScreenSettings ? 0 : -600)
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                
+                SettingsView(showing: $showSettings, userData: userData)
+                .offset(y: showSettings ? 0 : 600)
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
             }
         }
     }

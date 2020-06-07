@@ -9,24 +9,34 @@
 import SwiftUI
 
 struct PreWakeDurationSettingsView: View {
-    @ObservedObject var userData = UserData()
-    let times = [5, 10, 15, 20, 25, 30, 45, 60]
+    @Binding var showing: Bool
+    @ObservedObject var userData: UserData
+        
     @State private var selectedTime = 3
+    let times = [5, 10, 15, 20, 25, 30, 45, 60]
     
     var body: some View {
         VStack {
             VStack {
                 ZStack {
                     Text("Pre Wake Duration")
+                        .font(.system(size: 24))
                         .frame(maxWidth: .infinity)
                         .frame(height: 75)
                         .background(Color.red)
                         .foregroundColor(.white)
                     
-                    Button(action: {
-                        
-                    }) {
-                        Text("Save")
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.showing = false
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                        }
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .padding()
+                        .offset(y: -10)
                     }
                 }
                 
@@ -39,7 +49,7 @@ struct PreWakeDurationSettingsView: View {
                 .labelsHidden()
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 300)
+            .frame(height: 290)
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .shadow(radius: 30)
@@ -49,7 +59,10 @@ struct PreWakeDurationSettingsView: View {
 }
 
 struct PreWakeTimeSettingsView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        PreWakeDurationSettingsView()
+        PreWakeDurationSettingsView(showing: .constant(true), userData: UserData())
     }
 }
+
+let screen = UIScreen.main.bounds

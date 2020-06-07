@@ -17,24 +17,50 @@ struct WakeTimeSettingsView: View {
 
     @State private var wakeTime = Date()
     
+    @Binding var showing: Bool
+    @ObservedObject var userData: UserData
+    
     var body: some View {
         VStack {
-            Text("Wake Time Settings")
-                .font(.title)
-            
-            DatePicker(selection: $wakeTime, in: ...Date(), displayedComponents: .hourAndMinute) {
-                Text("")
+            VStack {
+                ZStack {
+                    Text("Wake Time Settings")
+                        .font(.system(size: 24))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 75)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.showing = false
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                        }
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .padding()
+                        .offset(y: -10)
+                    }
+                }
+                
+                DatePicker(selection: $wakeTime, in: ...Date(), displayedComponents: .hourAndMinute) {
+                    Text("")
+                }
             }
-
-            Text("Wake time is \(wakeTime, formatter: dateFormatter)")
-            Spacer()
+            .frame(maxWidth: .infinity)
+            .frame(height: 290)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+            .shadow(radius: 30)
+            .padding(.horizontal, 30)
         }
-        .padding(.top, 60)
     }
 }
 
 struct WakeTimeSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        WakeTimeSettingsView()
+        WakeTimeSettingsView(showing: .constant(true), userData: UserData())
     }
 }

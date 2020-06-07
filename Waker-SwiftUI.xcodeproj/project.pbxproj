@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4C191DE1248B656E001C7020 /* WakeScreenDurationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C191DE0248B656E001C7020 /* WakeScreenDurationSettingsView.swift */; };
+		4C191E04248C9DB0001C7020 /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 4C191E03248C9DB0001C7020 /* TimelaneCombine */; };
 		4C4034282488C5ED0055A7DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4034272488C5ED0055A7DD /* AppDelegate.swift */; };
 		4C40342A2488C5ED0055A7DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4034292488C5ED0055A7DD /* SceneDelegate.swift */; };
 		4C40342C2488C5ED0055A7DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40342B2488C5ED0055A7DD /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C191E04248C9DB0001C7020 /* TimelaneCombine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +143,9 @@
 			dependencies = (
 			);
 			name = "Waker-SwiftUI";
+			packageProductDependencies = (
+				4C191E03248C9DB0001C7020 /* TimelaneCombine */,
+			);
 			productName = "Waker-SwiftUI";
 			productReference = 4C4034242488C5ED0055A7DD /* Waker-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -169,6 +174,9 @@
 				Base,
 			);
 			mainGroup = 4C40341B2488C5ED0055A7DD;
+			packageReferences = (
+				4C191E02248C9DB0001C7020 /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
+			);
 			productRefGroup = 4C4034252488C5ED0055A7DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -398,6 +406,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4C191E02248C9DB0001C7020 /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCombine";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4C191E03248C9DB0001C7020 /* TimelaneCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C191E02248C9DB0001C7020 /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
+			productName = TimelaneCombine;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4C40341C2488C5ED0055A7DD /* Project object */;
 }
